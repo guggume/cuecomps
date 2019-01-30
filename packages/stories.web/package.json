@@ -11,7 +11,11 @@
     "@babel/core": "7.2.2",
     "@storybook/react": "4.1.11",
     "babel-loader": "8.0.5",
+    "cuecomps.web": "^0.0.1",
     "react": "16.7.0",
     "react-dom": "16.7.0"
+  },
+  "dependencies": {
+    "cuecomps.web": "^0.0.1"
   }
 }
