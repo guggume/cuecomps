@@ -3,5 +3,24 @@
   "version": "0.0.1",
   "description": "Components for Web",
   "main": "index.js",
-  "license": "MIT"
+  "main": "dist/bundle.js",
+  "module": "dist/bundle.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "BABEL_ENV=production rollup -c"
+  },
+  "peerDependencies": {
+    "react": "16.7.0",
+    "react-dom": "16.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.2",
+    "babel-preset-react-app": "7.0.0",
+    "react": "16.7.0",
+    "react-dom": "16.7.0",
+    "rollup": "1.1.2",
+    "rollup-plugin-babel": "4.3.2",
+    "rollup-plugin-node-resolve": "4.0.0",
+    "rollup-plugin-peer-deps-external": "2.2.0"
+  }
 }
