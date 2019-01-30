@@ -1,0 +1,7 @@
+{
+  "name": "cuecomps.web",
+  "version": "0.0.1",
+  "description": "Components for Web",
+  "main": "index.js",
+  "license": "MIT"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "stories.web",
+  "version": "0.0.1",
+  "description": "Storybook for Web",
+  "main": "index.js",
+  "license": "MIT"
+}
