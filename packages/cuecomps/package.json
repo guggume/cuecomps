@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "BABEL_ENV=production rollup -c",
-    "buildwatch": "BABEL_ENV=production rollup -c -w"
+    "buildwatch": "BABEL_ENV=production rollup -c -w",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "react": "16.7.0",
