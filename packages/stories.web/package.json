@@ -19,5 +19,6 @@
   },
   "dependencies": {
     "cuecomps": "^0.0.1"
-  }
+  },
+  "private": true
 }
