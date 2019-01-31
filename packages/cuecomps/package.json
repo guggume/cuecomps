@@ -1,6 +1,6 @@
 {
   "name": "cuecomps",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Components for Web",
   "main": "dist/bundle.js",
   "module": "dist/bundle.js",
