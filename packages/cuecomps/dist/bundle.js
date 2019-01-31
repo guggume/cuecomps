@@ -1,15 +1,7 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var React = require('react');
-var React__default = _interopDefault(React);
-var styled = require('styled-components');
-var styled__default = _interopDefault(styled);
-var reactStyledFlexboxgrid = require('react-styled-flexboxgrid');
-var reactTransitionGroup = require('react-transition-group');
+import React__default, { PureComponent, forwardRef, createElement, Suspense } from 'react';
+import styled, { keyframes, css } from 'styled-components';
+import { Col, Row } from 'react-styled-flexboxgrid';
+import { TransitionGroup, Transition } from 'react-transition-group';
 
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
@@ -67,7 +59,19 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 
-function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+function _typeof2(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof2 = function _typeof2(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof2 = function _typeof2(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof2(obj);
+}
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
@@ -166,7 +170,7 @@ function getLineHeight(_ref) {
   return "".concat((SIZES[size] || SIZES.normal) + PADDING * 2, "px");
 }
 
-var Text = styled__default.div(_templateObject(), function (_ref2) {
+var Text = styled.div(_templateObject(), function (_ref2) {
   var display = _ref2.display;
   return display || 'block';
 }, function (_ref3) {
@@ -298,17 +302,17 @@ var getTextColor = function getTextColor(_ref5) {
   return BUTTONS[renderAs]["color".concat(pusedo)] || BUTTONS[renderAs].color;
 };
 
-var rotate = styled.keyframes(_templateObject$1());
-var Label = styled__default(Text)(_templateObject2(), function (props) {
+var rotate = keyframes(_templateObject$1());
+var Label = styled(Text)(_templateObject2(), function (props) {
   return getTextColor(props);
 }, function (_ref6) {
   var underline = _ref6.underline;
   return underline ? 'underline' : 'none';
 }, function (_ref7) {
   var busy = _ref7.busy;
-  return busy && styled.css(_templateObject3());
+  return busy && css(_templateObject3());
 });
-var StyledButton = styled__default.button(_templateObject4(), function (_ref8) {
+var StyledButton = styled.button(_templateObject4(), function (_ref8) {
   var justify = _ref8.justify;
   return justify;
 }, function (props) {
@@ -339,7 +343,7 @@ var StyledButton = styled__default.button(_templateObject4(), function (_ref8) {
   return getTextColor(props, 'Disabled');
 }, function (_ref11) {
   var busy = _ref11.busy;
-  return busy && styled.css(_templateObject5(), function (props) {
+  return busy && css(_templateObject5(), function (props) {
     return "".concat(getSpinnerHeight(props), "px");
   }, function (props) {
     return "".concat(getSpinnerHeight(props), "px");
@@ -365,7 +369,7 @@ function (_PureComponent) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Button)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _this.getIcon = function (Icon) {
-      return styled__default(Icon)(_templateObject6(), function (_ref12) {
+      return styled(Icon)(_templateObject6(), function (_ref12) {
         var iconPosition = _ref12.iconPosition,
             PADDING = _ref12.theme.BUTTON.PADDING;
         return iconPosition === 'left' ? "".concat(PADDING, "px") : 0;
@@ -411,7 +415,7 @@ function (_PureComponent) {
   }]);
 
   return Button;
-}(React.PureComponent);
+}(PureComponent);
 
 Button.defaultProps = {
   underline: false,
@@ -440,7 +444,7 @@ function (_PureComponent) {
   }]);
 
   return FlatButton;
-}(React.PureComponent);
+}(PureComponent);
 
 function _templateObject14() {
   var data = _taggedTemplateLiteral(["\n    box-shadow: ", ";\n  "]);
@@ -612,58 +616,58 @@ var getPadding = function getPadding(props) {
   return "".concat(gap, " ").concat(gutter);
 };
 
-var FlexView = styled__default.div(_templateObject$2(), function (_ref3) {
+var FlexView = styled.div(_templateObject$2(), function (_ref3) {
   var flexDirection = _ref3.flexDirection;
   return flexDirection || 'column';
 }, function (props) {
   return getPadding(props);
 }, function (_ref4) {
   var inherit = _ref4.inherit;
-  return inherit && styled.css(_templateObject2$1());
+  return inherit && css(_templateObject2$1());
 }, function (_ref5) {
   var alignItems = _ref5.alignItems;
-  return alignItems && styled.css(_templateObject3$1(), alignItems);
+  return alignItems && css(_templateObject3$1(), alignItems);
 }, function (_ref6) {
   var justifyContent = _ref6.justifyContent;
-  return justifyContent && styled.css(_templateObject4$1(), justifyContent);
+  return justifyContent && css(_templateObject4$1(), justifyContent);
 }, function (_ref7) {
   var align = _ref7.align;
   return align;
 });
-var Col = styled__default(reactStyledFlexboxgrid.Col)(_templateObject5$1(), function (props) {
+var Col$1 = styled(Col)(_templateObject5$1(), function (props) {
   return "".concat(getGapSize(props), " ").concat(getGutterSize(props, props.theme.LAYOUT.GUTTER / 2));
 }, function (_ref8) {
   var auto = _ref8.auto;
-  return auto && styled.css(_templateObject6$1());
+  return auto && css(_templateObject6$1());
 }, function (_ref9) {
   var autoRight = _ref9.autoRight;
-  return autoRight && styled.css(_templateObject7());
+  return autoRight && css(_templateObject7());
 }, function (_ref10) {
   var align = _ref10.align;
   return align;
 });
-var Row = styled__default(reactStyledFlexboxgrid.Row)(_templateObject8(), function (_ref11) {
+var Row$1 = styled(Row)(_templateObject8(), function (_ref11) {
   var reverse = _ref11.reverse;
   return reverse ? 'row-reverse' : 'row';
 }, function (props) {
   return getPadding(props);
 }, function (_ref12) {
   var nowrap = _ref12.nowrap;
-  return nowrap && styled.css(_templateObject9());
+  return nowrap && css(_templateObject9());
 }, function (_ref13) {
   var inherit = _ref13.inherit;
-  return inherit && styled.css(_templateObject10());
+  return inherit && css(_templateObject10());
 }, function (_ref14) {
   var alignItems = _ref14.alignItems;
-  return alignItems && styled.css(_templateObject11(), alignItems);
+  return alignItems && css(_templateObject11(), alignItems);
 }, function (_ref15) {
   var justifyContent = _ref15.justifyContent;
-  return justifyContent && styled.css(_templateObject12(), justifyContent);
+  return justifyContent && css(_templateObject12(), justifyContent);
 }, function (_ref16) {
   var align = _ref16.align;
   return align;
 });
-var Card = styled__default(FlexView)(_templateObject13(), function (_ref17) {
+var Card = styled(FlexView)(_templateObject13(), function (_ref17) {
   var background = _ref17.theme.CARD.background;
   return background;
 }, function (_ref18) {
@@ -672,7 +676,7 @@ var Card = styled__default(FlexView)(_templateObject13(), function (_ref17) {
 }, function (_ref19) {
   var shadow = _ref19.shadow,
       CARD = _ref19.theme.CARD;
-  return !shadow && shadow !== false && styled.css(_templateObject14(), CARD.shadow);
+  return !shadow && shadow !== false && css(_templateObject14(), CARD.shadow);
 });
 
 function _templateObject$3() {
@@ -684,7 +688,7 @@ function _templateObject$3() {
 
   return data;
 }
-var StyledInput = styled__default.input(_templateObject$3(), function (_ref) {
+var StyledInput = styled.input(_templateObject$3(), function (_ref) {
   var FAMILY = _ref.theme.FONT.FAMILY;
   return FAMILY;
 });
@@ -724,10 +728,10 @@ function (_PureComponent) {
           onChange = _this$props.onChange,
           other = _objectWithoutProperties(_this$props, ["label", "error", "onChange"]);
 
-      return React__default.createElement("label", null, React__default.createElement(Row, null, React__default.createElement(Col, null, React__default.createElement(Text, {
+      return React__default.createElement("label", null, React__default.createElement(Row$1, null, React__default.createElement(Col$1, null, React__default.createElement(Text, {
         size: "small",
         precise: true
-      }, label)), error && React__default.createElement(Col, {
+      }, label)), error && React__default.createElement(Col$1, {
         autoRight: true
       }, React__default.createElement(Text, {
         size: "small",
@@ -740,7 +744,7 @@ function (_PureComponent) {
   }]);
 
   return TextInput;
-}(React.PureComponent);
+}(PureComponent);
 
 TextInput.defaultProps = {
   type: 'text',
@@ -798,7 +802,7 @@ function (_PureComponent) {
   }]);
 
   return Item;
-}(React.PureComponent);
+}(PureComponent);
 
 var List =
 /*#__PURE__*/
@@ -845,7 +849,7 @@ function (_PureComponent2) {
   }]);
 
   return List;
-}(React.PureComponent);
+}(PureComponent);
 
 List.defaultProps = {
   keyExtractor: function keyExtractor(item) {
@@ -873,8 +877,8 @@ function _templateObject$4() {
 
   return data;
 }
-var SectionHeader = styled__default.div(_templateObject$4());
-var SectionContent = styled__default.div(_templateObject2$2(), function (_ref) {
+var SectionHeader = styled.div(_templateObject$4());
+var SectionContent = styled.div(_templateObject2$2(), function (_ref) {
   var height = _ref.height;
   return height ? "".concat(height, "px") : 0;
 });
@@ -909,7 +913,7 @@ function (_PureComponent) {
   }]);
 
   return Item;
-}(React.PureComponent);
+}(PureComponent);
 
 var Section =
 /*#__PURE__*/
@@ -989,7 +993,7 @@ function (_PureComponent2) {
   }]);
 
   return Section;
-}(React.PureComponent);
+}(PureComponent);
 
 Section.defaultProps = {
   itemKeyExtractor: function itemKeyExtractor(section) {
@@ -1027,7 +1031,7 @@ function (_PureComponent3) {
   }]);
 
   return SectionList;
-}(React.PureComponent);
+}(PureComponent);
 
 SectionList.defaultProps = {
   sectionKeyExtractor: function sectionKeyExtractor(section) {
@@ -1054,7 +1058,7 @@ function _templateObject$5() {
 
   return data;
 }
-var Background = styled__default.div(_templateObject$5(), function (_ref) {
+var Background = styled.div(_templateObject$5(), function (_ref) {
   var backgroundColor = _ref.backgroundColor;
   return backgroundColor;
 }, function (_ref2) {
@@ -1065,7 +1069,7 @@ var Background = styled__default.div(_templateObject$5(), function (_ref) {
       corners = _ref3.corners;
   return corners ? "".concat(height / 2, "px") : 0;
 });
-var Progress = styled__default.div(_templateObject2$3(), function (_ref4) {
+var Progress = styled.div(_templateObject2$3(), function (_ref4) {
   var backgroundColor = _ref4.backgroundColor;
   return backgroundColor;
 }, function (_ref5) {
@@ -1106,7 +1110,7 @@ function (_PureComponent) {
   }]);
 
   return ProgressBarHorizontal;
-}(React.PureComponent);
+}(PureComponent);
 
 ProgressBarHorizontal.defaultProps = {
   height: 8,
@@ -1144,9 +1148,9 @@ function _templateObject$6() {
 
   return data;
 }
-var SVG = styled__default.svg(_templateObject$6());
-var Circle = styled__default.circle(_templateObject2$4());
-var Text$1 = styled__default.text(_templateObject3$2(), function (_ref) {
+var SVG = styled.svg(_templateObject$6());
+var Circle = styled.circle(_templateObject2$4());
+var Text$1 = styled.text(_templateObject3$2(), function (_ref) {
   var FAMILY = _ref.theme.FONT.FAMILY;
   return FAMILY;
 }, function (_ref2) {
@@ -1214,7 +1218,7 @@ function (_PureComponent) {
   }]);
 
   return ProgressBarRadial;
-}(React.PureComponent);
+}(PureComponent);
 
 ProgressBarRadial.defaultProps = {
   radius: 8,
@@ -1266,15 +1270,15 @@ function _templateObject$7() {
 
   return data;
 }
-var Wrapper = styled__default.div(_templateObject$7(), function (_ref) {
+var Wrapper = styled.div(_templateObject$7(), function (_ref) {
   var width = _ref.width;
   return "".concat(width, "px");
 });
-var Gauge = styled__default.div(_templateObject2$5(), function (_ref2) {
+var Gauge = styled.div(_templateObject2$5(), function (_ref2) {
   var backgroundColor = _ref2.backgroundColor;
   return backgroundColor;
 });
-var Meter = styled__default.div(_templateObject3$3(), function (_ref3) {
+var Meter = styled.div(_templateObject3$3(), function (_ref3) {
   var danger = _ref3.danger;
   return 180 + 180 * danger * 0.01;
 }, function (_ref4) {
@@ -1287,7 +1291,7 @@ var Meter = styled__default.div(_templateObject3$3(), function (_ref3) {
   var progressColor = _ref6.progressColor;
   return progressColor;
 });
-var Needle = styled__default.div(_templateObject4$2(), function (_ref7) {
+var Needle = styled.div(_templateObject4$2(), function (_ref7) {
   var progress = _ref7.progress;
   return -90 + 180 * progress * 0.01;
 });
@@ -1327,7 +1331,7 @@ function (_PureComponent) {
   }]);
 
   return ProgressBarGauge;
-}(React.PureComponent);
+}(PureComponent);
 
 ProgressBarGauge.defaultProps = {
   backgroundColor: '#2AC3AA',
@@ -1471,31 +1475,31 @@ function _templateObject$8() {
 
   return data;
 }
-var moveten = styled.keyframes(_templateObject$8());
-var movesix = styled.keyframes(_templateObject2$6());
-var Wrapper$1 = styled__default.div(_templateObject3$4());
-var Sec1 = styled__default.div(_templateObject4$3(), movesix, function (_ref) {
+var moveten = keyframes(_templateObject$8());
+var movesix = keyframes(_templateObject2$6());
+var Wrapper$1 = styled.div(_templateObject3$4());
+var Sec1 = styled.div(_templateObject4$3(), movesix, function (_ref) {
   var delay = _ref.delay;
   return "-".concat(delay, "s");
 });
-var Sec2 = styled__default.div(_templateObject5$2(), moveten);
-var Min1 = styled__default.div(_templateObject6$2(), movesix, function (_ref2) {
+var Sec2 = styled.div(_templateObject5$2(), moveten);
+var Min1 = styled.div(_templateObject6$2(), movesix, function (_ref2) {
   var delay = _ref2.delay;
   return "-".concat(delay, "s");
 });
-var Min2 = styled__default.div(_templateObject7$1(), moveten, function (_ref3) {
+var Min2 = styled.div(_templateObject7$1(), moveten, function (_ref3) {
   var delay = _ref3.delay;
   return "-".concat(delay, "s");
 });
-var Hour2 = styled__default.div(_templateObject8$1(), moveten, function (_ref4) {
+var Hour2 = styled.div(_templateObject8$1(), moveten, function (_ref4) {
   var delay = _ref4.delay;
   return "-".concat(delay, "s");
 });
-var Hour1 = styled__default.div(_templateObject9$1(), moveten, function (_ref5) {
+var Hour1 = styled.div(_templateObject9$1(), moveten, function (_ref5) {
   var delay = _ref5.delay;
   return "-".concat(delay, "s");
 });
-var SplitText = styled__default(Text)(_templateObject10$1());
+var SplitText = styled(Text)(_templateObject10$1());
 var TENS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var SIXES = [0, 1, 2, 3, 4, 5];
 
@@ -1612,7 +1616,7 @@ function (_PureComponent) {
   }]);
 
   return Clock;
-}(React.PureComponent);
+}(PureComponent);
 
 Clock.defaultProps = {
   startFrom: 0
@@ -1623,25 +1627,25 @@ function createCommonjsModule(fn, module) {
 }
 
 var _extends_1 = createCommonjsModule(function (module) {
-function _extends() {
-  module.exports = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+  function _extends() {
+    module.exports = _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
         }
       }
-    }
 
-    return target;
-  };
+      return target;
+    };
 
-  return _extends.apply(this, arguments);
-}
+    return _extends.apply(this, arguments);
+  }
 
-module.exports = _extends;
+  module.exports = _extends;
 });
 
 function _objectWithoutPropertiesLoose$1(source, excluded) {
@@ -1702,7 +1706,7 @@ var index = memoize(function (prop) {
 /* Z+1 */
 );
 
-const StyledIcon = React.forwardRef((props, ref) => {
+const StyledIcon = forwardRef((props, ref) => {
   const title = props.title,
         size = props.size,
         otherProps = objectWithoutProperties(props, ["title", "size"]);
@@ -1724,16 +1728,16 @@ const StyledIcon = React.forwardRef((props, ref) => {
 
     return p;
   }, {});
-  return React.createElement("svg", _extends_1({}, iconProps, svgProps, {
+  return createElement("svg", _extends_1({}, iconProps, svgProps, {
     ref: ref
-  }), title && React.createElement("title", {
+  }), title && createElement("title", {
     key: "Close-title"
-  }, title), React.createElement("path", {
+  }, title), createElement("path", {
     d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z",
     key: "k0"
   }));
 });
-const Close = styled__default(StyledIcon).withConfig({
+const Close = styled(StyledIcon).withConfig({
   displayName: "Close",
   componentId: "sc-1onlea5-0"
 })(["display:inline-block;vertical-align:middle;overflow:hidden;"]);
@@ -1816,17 +1820,17 @@ function getWrapperStyle(_ref) {
       radius = _ref.radius;
 
   if (size === 'full-screen') {
-    return styled.css(_templateObject$9());
+    return css(_templateObject$9());
   }
 
   if (size === 'custom') {
-    return styled.css(_templateObject2$7(), width, height, height, radius || '8px');
+    return css(_templateObject2$7(), width, height, height, radius || '8px');
   }
 
-  return styled.css(_templateObject3$5());
+  return css(_templateObject3$5());
 }
 
-var Wrapper$2 = styled__default.div(_templateObject4$4(), function (props) {
+var Wrapper$2 = styled.div(_templateObject4$4(), function (props) {
   return getWrapperStyle(props);
 }, function (_ref2) {
   var overflow = _ref2.overflow;
@@ -1834,10 +1838,10 @@ var Wrapper$2 = styled__default.div(_templateObject4$4(), function (props) {
 }, function (_ref3) {
   var transparent = _ref3.transparent,
       COLORS = _ref3.theme.COLORS;
-  return !transparent && styled.css(_templateObject5$3(), COLORS.WHITE);
+  return !transparent && css(_templateObject5$3(), COLORS.WHITE);
 });
-var CloseButtonWrapper = styled__default.div(_templateObject6$3());
-var CloseIcon = styled__default(Close)(_templateObject7$2(), function (_ref4) {
+var CloseButtonWrapper = styled.div(_templateObject6$3());
+var CloseIcon = styled(Close)(_templateObject7$2(), function (_ref4) {
   var COLORS = _ref4.theme.COLORS;
   return COLORS.WHITE;
 });
@@ -1882,7 +1886,7 @@ function (_PureComponent) {
   }]);
 
   return Modal;
-}(React.PureComponent);
+}(PureComponent);
 
 Modal.defaultProps = {
   transparent: false,
@@ -1914,7 +1918,7 @@ var TIMEOUT = {
   enter: 0,
   exit: 400
 };
-var BackDrop = styled__default.div(_templateObject$a(), function (_ref) {
+var BackDrop = styled.div(_templateObject$a(), function (_ref) {
   var MODAL = _ref.theme.ZINDEX.MODAL;
   return MODAL;
 }, function (_ref2) {
@@ -1924,7 +1928,7 @@ var BackDrop = styled__default.div(_templateObject$a(), function (_ref) {
   var visible = _ref3.visible;
   return visible ? 'all' : 'none';
 });
-var ScaleWrapper = styled__default.div(_templateObject2$8(), function (_ref4) {
+var ScaleWrapper = styled.div(_templateObject2$8(), function (_ref4) {
   var visible = _ref4.visible;
   return visible ? 1 : 0;
 });
@@ -2000,7 +2004,7 @@ function (_PureComponent) {
       var _this2 = this;
 
       var modal = this.props.modal;
-      return React__default.createElement(reactTransitionGroup.TransitionGroup, null, modal && React__default.createElement(reactTransitionGroup.Transition, {
+      return React__default.createElement(TransitionGroup, null, modal && React__default.createElement(Transition, {
         key: modal.name,
         modal: modal,
         timeout: TIMEOUT
@@ -2010,7 +2014,7 @@ function (_PureComponent) {
         }, React__default.createElement(ScaleWrapper, {
           visible: state === 'entered',
           onClick: _this2.onBackdropClick
-        }, React__default.createElement(React.Suspense, {
+        }, React__default.createElement(Suspense, {
           fallback: React__default.createElement(Text, null, "Loading...")
         }, _this2.renderModal(childProps.modal))));
       }));
@@ -2018,7 +2022,7 @@ function (_PureComponent) {
   }]);
 
   return ModalProvider;
-}(React.PureComponent);
+}(PureComponent);
 
 ModalProvider.defaultProps = {
   modal: null,
@@ -2068,7 +2072,7 @@ function (_PureComponent) {
   }]);
 
   return Module;
-}(React.PureComponent);
+}(PureComponent);
 
 Module.defaultProps = {
   loadingComponent: null
@@ -2151,7 +2155,7 @@ function (_PureComponent) {
   }]);
 
   return ModuleContainer;
-}(React.PureComponent);
+}(PureComponent);
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -2256,13 +2260,13 @@ function _templateObject$b() {
 
   return data;
 }
-var TextMessage = styled__default.div(_templateObject$b());
-var CtaWrapper = styled__default.div(_templateObject2$9());
-var CtaLink = styled__default.a(_templateObject3$6());
-var CloseBtnWrapper = styled__default.div(_templateObject4$5());
-var CloseIcon$1 = styled__default(Close)(_templateObject5$4());
-var ToastWrapper = styled__default.div(_templateObject6$4());
-var CTDiv = styled__default.div(_templateObject7$3());
+var TextMessage = styled.div(_templateObject$b());
+var CtaWrapper = styled.div(_templateObject2$9());
+var CtaLink = styled.a(_templateObject3$6());
+var CloseBtnWrapper = styled.div(_templateObject4$5());
+var CloseIcon$1 = styled(Close)(_templateObject5$4());
+var ToastWrapper = styled.div(_templateObject6$4());
+var CTDiv = styled.div(_templateObject7$3());
 var transitionStyles = {
   entering: {
     transform: 'translateX(0)'
@@ -2379,7 +2383,7 @@ function (_PureComponent) {
       var inProp = this.state.inProp;
       var isDismissible = !(ctaList !== null && ctaList.length > 0);
       var duration = 1000;
-      return React__default.createElement("div", null, React__default.createElement(reactTransitionGroup.Transition, {
+      return React__default.createElement("div", null, React__default.createElement(Transition, {
         in: inProp,
         timeout: duration
       }, function (state) {
@@ -2395,7 +2399,7 @@ function (_PureComponent) {
   }]);
 
   return NotificationToast;
-}(React.PureComponent);
+}(PureComponent);
 
 NotificationToast.defaultProps = {
   message: null,
@@ -2412,7 +2416,7 @@ function _templateObject$c() {
 
   return data;
 }
-var index$1 = styled__default.div(_templateObject$c(), function (_ref) {
+var index$1 = styled.div(_templateObject$c(), function (_ref) {
   var height = _ref.height;
   return "".concat(height || 1, "px");
 }, function (_ref2) {
@@ -2550,30 +2554,30 @@ function _templateObject$d() {
 
   return data;
 }
-var moveten$1 = styled.keyframes(_templateObject$d());
-var movesix$1 = styled.keyframes(_templateObject2$a());
-var Container = styled__default.div(_templateObject3$7());
-var Wrapper$3 = styled__default.div(_templateObject4$6());
-var Sec1$1 = styled__default.div(_templateObject5$5(), function (_ref) {
+var moveten$1 = keyframes(_templateObject$d());
+var movesix$1 = keyframes(_templateObject2$a());
+var Container = styled.div(_templateObject3$7());
+var Wrapper$3 = styled.div(_templateObject4$6());
+var Sec1$1 = styled.div(_templateObject5$5(), function (_ref) {
   var paused = _ref.paused,
       delay = _ref.delay;
-  return !paused && styled.css(_templateObject6$5(), movesix$1, delay);
+  return !paused && css(_templateObject6$5(), movesix$1, delay);
 });
-var Sec2$1 = styled__default.div(_templateObject7$4(), function (_ref2) {
+var Sec2$1 = styled.div(_templateObject7$4(), function (_ref2) {
   var paused = _ref2.paused;
-  return !paused && styled.css(_templateObject8$2(), moveten$1);
+  return !paused && css(_templateObject8$2(), moveten$1);
 });
-var Min1$1 = styled__default.div(_templateObject9$2(), function (_ref3) {
+var Min1$1 = styled.div(_templateObject9$2(), function (_ref3) {
   var paused = _ref3.paused,
       delay = _ref3.delay;
-  return !paused && styled.css(_templateObject10$2(), movesix$1, delay);
+  return !paused && css(_templateObject10$2(), movesix$1, delay);
 });
-var Min2$1 = styled__default.div(_templateObject11$1(), function (_ref4) {
+var Min2$1 = styled.div(_templateObject11$1(), function (_ref4) {
   var paused = _ref4.paused,
       delay = _ref4.delay;
-  return !paused && styled.css(_templateObject12$1(), moveten$1, delay);
+  return !paused && css(_templateObject12$1(), moveten$1, delay);
 });
-var SplitText$1 = styled__default(Text)(_templateObject13$1());
+var SplitText$1 = styled(Text)(_templateObject13$1());
 var TENS$1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var SIXES$1 = [0, 1, 2, 3, 4, 5];
 
@@ -2698,28 +2702,10 @@ function (_PureComponent) {
   }]);
 
   return Timer;
-}(React.PureComponent);
+}(PureComponent);
 
 Timer.defaultProps = {
   color: '#000000'
 };
 
-exports.Clock = Clock;
-exports.Modal = ModalProvider;
-exports.Module = ModuleContainer;
-exports.NotificationToast = NotificationToast;
-exports.Separator = index$1;
-exports.Text = Text;
-exports.Timer = Timer;
-exports.Button = Button;
-exports.FlatButton = FlatButton;
-exports.TextInput = TextInput;
-exports.FlexView = FlexView;
-exports.Col = Col;
-exports.Row = Row;
-exports.Card = Card;
-exports.List = List;
-exports.SectionList = SectionList;
-exports.ProgressBarHorizontal = ProgressBarHorizontal;
-exports.ProgressBarRadial = ProgressBarRadial;
-exports.ProgressBarGauge = ProgressBarGauge;
+export { Clock, ModalProvider as Modal, ModuleContainer as Module, NotificationToast, index$1 as Separator, Text, Timer, Button, FlatButton, TextInput, FlexView, Col$1 as Col, Row$1 as Row, Card, List, SectionList, ProgressBarHorizontal, ProgressBarRadial, ProgressBarGauge };

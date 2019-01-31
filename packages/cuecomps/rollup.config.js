@@ -8,13 +8,13 @@ export default {
   input: 'src/index.js',
   output: {
     file: pkg.module,
-    format: 'cjs'
+    format: 'esm'
   },
   plugins: [
     peerDepsExternal(),
     resolve(),
     commonjs({
-      include: 'node_modules/**',
+      include: '../../node_modules/**',
     }),
     babel({
       runtimeHelpers: true,
