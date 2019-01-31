@@ -8,7 +8,7 @@ export default {
   input: 'src/index.js',
   output: {
     file: pkg.module,
-    format: 'esm'
+    format: 'cjs'
   },
   plugins: [
     peerDepsExternal(),
